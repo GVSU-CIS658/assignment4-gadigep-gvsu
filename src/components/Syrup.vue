@@ -1,8 +1,17 @@
 <template>
-  <div class="syrup"></div>
+  <div
+    class="syrup"
+    :style="{ '--texture-color': displaySyrup.color } as Record<string, string>"
+  ></div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { storeToRefs } from "pinia";
+import { useBeverageStore } from "../stores/beverageStore";
+
+const store = useBeverageStore();
+const { displaySyrup } = storeToRefs(store);
+</script>
 <style lang="scss" scoped>
 .syrup {
   transform: translateY(400%);
